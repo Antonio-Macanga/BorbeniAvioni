@@ -18,6 +18,15 @@ builder.Services.AddDbContext<BackendContext>(o => {
     o.UseSqlServer(builder.Configuration.GetConnectionString("BackendContext"));
 });
 
+
+builder.Services.AddCors(o => {
+    o.AddPolicy("CorsPolicy", b =>
+    {
+        b.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+    });
+});
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -43,5 +52,7 @@ app.MapControllers();
 app.UseStaticFiles();
 app.UseDefaultFiles();
 app.MapFallbackToFile("index.html");
+
+app.UseCors("CorsPolicy");
 
 app.Run();
