@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace EdunovaAPP.Models
+namespace Beckend.Models
 {
     public class Drzava : Entitet
     {

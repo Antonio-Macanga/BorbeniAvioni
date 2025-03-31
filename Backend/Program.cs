@@ -1,4 +1,4 @@
-using EdunovaAPP.Data;
+using Beckend.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

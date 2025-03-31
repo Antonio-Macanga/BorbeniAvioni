@@ -1,4 +1,4 @@
-﻿using EdunovaAPP.Models;
+﻿using Beckend.Models;
 
 namespace Backend.Models
 {

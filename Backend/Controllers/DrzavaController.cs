@@ -1,7 +1,6 @@
-﻿using EdunovaAPP.Data;
-using EdunovaAPP.Models;
+﻿using Beckend.Data;
+using Beckend.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq.Expressions;
 
 namespace Backend.Controllers
 {
@@ -70,22 +69,24 @@ namespace Backend.Controllers
             }
         }
 
-        [HttpPut]
+        [HttpPut("{sifra:int}")]
         public IActionResult Put(int sifra, Drzava drzava)
         {
             try
             {
+
                 var drzavaBaza = _context.Drzave.Find(sifra);
                 if (drzavaBaza == null)
                 {
-                    return NotFound(new { poruka = $"Država s šifrom {sifra} ne postoji" });
+                    return NotFound(new { poruka = $"Drzava s šifrom {sifra} ne postoji" });
                 }
-                // rucni mapping - kasnije auto
+
+                // rucni mapping - kasnije automatika
                 drzavaBaza.Naziv = drzava.Naziv;
 
-                _context.Drzave.Update(drzava);
+                _context.Drzave.Update(drzavaBaza);
                 _context.SaveChanges();
-                return Ok(drzava);
+                return Ok(drzavaBaza);
             }
             catch (Exception e)
             {
@@ -93,10 +94,10 @@ namespace Backend.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpDelete("{sifra:int}")]
         public IActionResult Delete(int sifra)
         {
-            if (sifra<=0)
+            if (sifra <= 0)
             {
                 return StatusCode(StatusCodes.Status404NotFound, new { poruka = "Šifra mora biti pozitivan broj" });
             }
@@ -105,11 +106,11 @@ namespace Backend.Controllers
                 var drzava = _context.Drzave.Find(sifra);
                 if (drzava == null)
                 {
-                    return NotFound(new { poruka = $"Država s šifrom {sifra} ne postoji" });
+                    return NotFound(new { poruka = $"Drzava s šifrom {sifra} ne postoji" });
                 }
                 _context.Drzave.Remove(drzava);
                 _context.SaveChanges();
-                return NoContent ();
+                return NoContent();
             }
             catch (Exception e)
             {

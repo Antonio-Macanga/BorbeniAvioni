@@ -1,7 +1,7 @@
-﻿using EdunovaAPP.Models;
+﻿using Beckend.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace EdunovaAPP.Data
+namespace Beckend.Data
 {
     public class BackendContext : DbContext
     {
