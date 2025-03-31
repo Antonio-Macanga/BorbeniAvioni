@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EdunovaAPP.Data
 {
-    public class EdunovaContext : DbContext
+    public class BackendContext : DbContext
     {
 
-        public EdunovaContext(DbContextOptions<EdunovaContext> opcije) : base(opcije)
+        public BackendContext(DbContextOptions<BackendContext> opcije) : base(opcije)
         {
             //ovdje se  mogu fino postaviti opcije, ali ne za sada
         }

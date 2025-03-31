@@ -5,6 +5,6 @@ namespace EdunovaAPP.Models
     public class Drzava : Entitet
     {
         public string Naziv { get; set; } = "";
-      
+
     }
 }

@@ -14,8 +14,8 @@ builder.Services.AddSwaggerGen();
 
 
 // dodavanje db contexta
-builder.Services.AddDbContext<EdunovaContext>(o => {
-    o.UseSqlServer(builder.Configuration.GetConnectionString("EdunovaContext"));
+builder.Services.AddDbContext<BackendContext>(o => {
+    o.UseSqlServer(builder.Configuration.GetConnectionString("BackendContext"));
 });
 
 var app = builder.Build();
@@ -39,5 +39,9 @@ app.UseSwaggerUI(o =>
 });
 
 app.MapControllers();
+
+app.UseStaticFiles();
+app.UseDefaultFiles();
+app.MapFallbackToFile("index.html");
 
 app.Run();
