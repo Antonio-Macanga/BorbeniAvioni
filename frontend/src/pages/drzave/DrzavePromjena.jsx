@@ -12,6 +12,17 @@ export default function DrzavePromjena(){
     const [drzava,setDrzava] = useState({});
     const routeParams = useParams();
 
+
+    async function dohvatiDrzava(){
+        const odgovor = await DrzavaService.getBySifra(routeParams.sifra)
+
+        if(odgovor.izvodiSeOd!=null){
+            odgovor.izvodiSeOd = moment.utc(odgovor.izvodiSeOd).format('yyyy-MM-DD')
+        }
+        
+        setDrzava(odgovor)
+    }
+    
     useEffect(()=>{
         dohvatiDrzava();
     },[])
@@ -45,7 +56,7 @@ export default function DrzavePromjena(){
         <Form.Group controlId="naziv">
             <Form.Label>Naziv</Form.Label>
             <Form.Control type="text" name="naziv" required 
-            defaultValue={smjer.naziv}/>
+            defaultValue={drzava.naziv}/>
         </Form.Group>
 
         <hr/>

@@ -10,7 +10,7 @@ import { RouteNames } from "../../constants";
 
 export default function DrzavePregled(){
 
-    const[smjerovi, setDrzave] = useState();
+    const[drzave, setDrzave] = useState();
     const navigate = useNavigate();
 
     async function dohvatiDrzave(){
@@ -18,7 +18,7 @@ export default function DrzavePregled(){
         setDrzave(odgovor)
     }
 
-    // hooks (kuka) se izvodi prilikom dolaska na stranicu Smjerovi
+    // hooks (kuka) se izvodi prilikom dolaska na stranicu Drzave
     useEffect(()=>{
         dohvatiDrzave();
     },[])
@@ -45,7 +45,7 @@ export default function DrzavePregled(){
         <Link
         to={RouteNames.DRZAVA_NOVI}
         className="btn btn-success siroko"
-        >Dodaj novi smjer</Link>
+        >Dodaj novi drzavu</Link>
         <Table striped bordered hover responsive>
             <thead>
                 <tr>
@@ -54,7 +54,7 @@ export default function DrzavePregled(){
                 </tr>
             </thead>
             <tbody>
-                {drzave && drzave.map((smjer,index)=>(
+                {drzave && drzave.map((drzava,index)=>(
                     <tr key={index}>
                         <td>
                             {drzava.naziv}

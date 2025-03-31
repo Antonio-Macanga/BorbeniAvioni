@@ -51,7 +51,7 @@ export default function DrzaveDodaj(){
             </Col>
             <Col xs={6} sm={6} md={9} lg={10} xl={6} xxl={6}>
                 <Button variant="success" type="submit" className="siroko">
-                    Dodaj smjer
+                    Dodaj drzava
                 </Button>
             </Col>
         </Row>
